@@ -1,0 +1,90 @@
+<script language="Javascript" type = "text/Javascript">
+var questionShape = 1;
+var temp_Shape = 0;
+var answer = "circle";
+
+function New_Pic()
+{
+temp_Shape = questionShape;
+while(temp_Shape == questionShape)
+	temp_Shape = Math.floor(Math.random()*8)+1;
+questionShape = temp_Shape;
+
+switch(questionShape)
+{
+case 1:
+document.getElementById("shape_given").src="images/circle.jpg";
+answer = "circle";
+break;
+
+case 2:
+document.getElementById("shape_given").src="images/rectangle.jpg";
+answer = "rectangle";
+break;
+
+case 3:
+document.getElementById("shape_given").src="images/parallelogram.jpg";
+answer = "parallelogram";
+break;
+
+case 4:
+document.getElementById("shape_given").src="images/pentagon.jpg";
+answer = "pentagon";
+break;
+
+case 5:
+document.getElementById("shape_given").src="images/triangle.jpg";
+answer = "triangle";
+break;
+
+case 6:
+document.getElementById("shape_given").src="images/square.jpg";
+answer = "square";
+break;
+
+case 7:
+document.getElementById("shape_given").src="images/rhombus.jpg";
+answer = "rhombus";
+break;
+
+default:
+document.getElementById("shape_given").src="images/hexagon.jpg";
+answer = "hexagon";
+break;
+}
+}
+
+
+function Load_Shape(shapeID)
+{
+document.getElementById("wrong_picture").src = "images/empty.jpg";
+document.getElementById("right_answer").innerHTML = "";
+
+if(shapeID == questionShape)
+document.getElementById("answer").innerHTML = "Correct";
+
+else
+{
+document.getElementById("answer").innerHTML = "Sorry";
+document.getElementById("wrong_picture").src = document.getElementById("shape_given").src;
+document.getElementById("right_answer").innerHTML = " is a " + answer;
+}
+New_Pic();
+}
+</script>
+
+<p style="width: 530px; border:1px groove black; text-align:center;"><img src="images/circle.jpg" id="shape_given" height="100px"></p>
+<h1>Which shape is this?</h1>
+<b style="border: 1px groove darkred; margin: 5px; padding: 5px;background:beige; width:120px; text-align:center;" onclick="Load_Shape(1)">Circle</b>
+<b style="border: 1px groove darkred; margin: 5px; padding: 5px;background:beige; width:120px; text-align:center;" onclick="Load_Shape(2)">Rectangle</b>
+<b style="border: 1px groove darkred; margin: 5px; padding: 5px;background:beige; width:120px; text-align:center;" onclick="Load_Shape(3)">Parallelogram</b>
+<b style="border: 1px groove darkred; margin: 5px; padding: 5px;background:beige; width:120px; text-align:center;" onclick="Load_Shape(4)">Pentagon</b>
+
+<br /><br />
+<b style="border: 1px groove darkblue; margin: 5px; padding: 5px;background:lightblue; width:120px; text-align:center;" onclick="Load_Shape(5)">Triangle</b>
+<b style="border: 1px groove darkblue; margin: 5px; padding: 5px;background:lightblue; width:120px; text-align:center;" onclick="Load_Shape(6)">Square</b>
+<b style="border: 1px groove darkblue; margin: 5px; padding: 5px;background:lightblue; width:120px; text-align:center;" onclick="Load_Shape(7)">Rhombus (or Diamond)</b>
+<b style="border: 1px groove darkblue; margin: 5px; padding: 5px;background:lightblue; width:120px; text-align:center;" onclick="Load_Shape(8)">Hexagon</b>
+
+<h1 id="answer"></h1><img src="images/empty.jpg" id="wrong_picture" height="50px"> <b id="right_answer"></b>
+

@@ -1,0 +1,90 @@
+<html>
+<head></head>
+<body>
+
+<script language = "javascript" type="text/javascript">
+//variables
+var TA_Total = 0;
+var TA_max = 5;
+var TA_num = 0;
+var TA_answer = 0;
+var TA_sum = 0;
+var TA_Question = "Temp";
+var Load_Numbers = new Array();
+var TA_i = 0;
+
+//TA Set Values
+function TA_Set_Values()
+{
+TA_Question = " ";
+TA_Total = Math.floor(Math.random()*3+2);
+for(TA_i = 0; TA_i < TA_max; TA_i++)
+{
+if(TA_i<TA_Total)
+Load_Numbers[TA_i]=Math.round(Math.random()*150);
+else
+Load_Numbers[TA_i]=-1;
+}//end for loop
+
+TA_Question = " " + Load_Numbers[0];
+TA_i = 1;
+while(Load_Numbers[TA_i]!=-1)
+{
+TA_Question += " + " + Load_Numbers[TA_i];
+TA_i++;
+}//end while
+
+while(TA_i<TA_max)
+{
+Load_Numbers[TA_i] = 0;
+TA_i++;
+}//end while
+
+TA_sum = 0;
+TA_i = 0;
+for( TA_i = 0; TA_i < TA_max; TA_i++)
+TA_sum += Load_Numbers[TA_i];
+}
+
+//TA_New_Question
+function TA_New_Question()
+{
+document.getElementById("Get_Solution").innerHTML="What is " + TA_Question;
+}
+
+//TA_Check
+function TA_Check()
+{
+if(TA_answer == TA_sum)
+document.getElementById("Your_Answer").innerHTML = "Correct!";
+else if(TA_answer == -1)
+document.getElementById("Your_Answer").innerHTML = "";
+else
+document.getElementById("Your_Answer").innerHTML = "Incorrect. " + TA_Question + " is " + TA_sum;
+}
+
+
+//Addition_Exercises
+function Addition_Exercises()
+{
+TA_answer = document.getElementById("Get_Answer").value;
+if(TA_answer == "")
+{
+TA_answer = -1;
+}
+TA_Check();
+if(TA_answer !=-1)
+document.getElementById("click_me_now").value="Check Answer";
+document.getElementById("Get_Answer").value="";
+TA_Set_Values();
+TA_New_Question();
+} 
+//end Addition_Exercises
+</script>
+<h1>Press the Button for a Question</h1><h1 id="Get_Solution"></h1>
+<input type="text" id="Get_Answer">
+<input type="button" id="click_me_now" value="Give Me a Question"onclick="Addition_Exercises()"/>
+
+<h1 id="Your_Answer"></h1><h1>Need Help?</h1> Buy the <a href="http://store.payloadz.com/details/844346-eBooks-Education-3rd-Grade-Math-Addition-Worksheet.html">Addition Worksheet.</a> It's only 50 cents.The <a href="http://store.payloadz.com/details/844346-eBooks-Education-3rd-Grade-Math-Addition-Worksheet.html">Addition Worksheet</a> comes with:
+<ul><li>Review Questions</li><li>Easy and Difficult Questions</li><li>Explanations</li><li>Answers</li><li>Solutions for Difficult Problems <i>Solutions means that they are done in step by step and/or in color-coded help</i></li></ul></body>
+</html>

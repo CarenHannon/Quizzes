@@ -1,0 +1,55 @@
+<script language="Javascript" type="text/javascript">
+var question = "1 x 1";
+var first = 1;
+var answer = 0;
+var product = 0;
+var Factor1 = 0;
+var Factor2 = 0;
+
+function set_Variables()
+{
+Factor1 = Math.floor(Math.random()*11);
+Factor2 = Math.floor(Math.random()*11);
+product = Factor1 * Factor2;
+
+}
+
+//Check Answer
+function check_Answer()
+{
+answer = document.getElementById("Answer").value;
+if(answer == product)
+document.getElementById("Correction").innerHTML = "Correct";
+else
+document.getElementById("Correction").innerHTML = "Incorrect";
+
+}
+//Displays Questions function
+function getQuest()
+{
+question = " " + Factor1 + " x " + Factor2;
+document.getElementById("Question").innerHTML = "What is " + question + " ? ";
+}
+
+//Multiplication Function
+function Th_Mult()
+{
+if(first!=1)
+{
+check_Answer();
+}
+document.getElementById("Answer").value="";
+set_Variables();
+getQuest();
+first = 0;
+
+
+}
+</script>
+
+<h1> Practice Multiplication</h1>
+The first one is done for you.
+<h1 id="Question">What is 0 x 0?</h1>
+<input type="text" id="Answer" value="0">
+<input type="button" value="Check Answer and Get Another Question" onclick="Th_Mult()">
+<h1 id="Correction"></h1>

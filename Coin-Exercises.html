@@ -1,0 +1,67 @@
+
+<h1>What Coin is This?</h1>
+
+<script language="javascript" type="text/javascript">
+var QuestionList = new Array();
+QuestionList[0] = 1;
+QuestionList[1] = 5;
+QuestionList[2] = 10;
+QuestionList[3] = 25;
+var Coin_Question = 1;
+var Random_Question = 0;
+var old_Question = 0;
+
+//Change Coin Function
+function Change_Coin ()
+{
+old_Question = Random_Question;
+while(old_Question==Random_Question)
+	Random_Question = Math.floor(Math.random()*4);
+Coin_Question = QuestionList[Random_Question];
+
+switch(Random_Question)
+{
+case 1:
+document.getElementById("image").src="nickel.JPG";
+break;
+
+case 2:
+document.getElementById("image").src="dime.JPG";
+break;
+case 3:
+document.getElementById("image").src="quarter.JPG";
+break;
+
+default:
+document.getElementById("image").src="penny.JPG";
+}
+
+}
+
+
+//Check Coin Function
+function Check_Coin(Number_Answer)
+{
+if(Coin_Question == Number_Answer)
+{
+document.getElementById("Error_Message").innerHTML="Good Answer!";
+Change_Coin();
+}
+else
+document.getElementById("Error_Message").innerHTML="Nope. Try another answer";
+}
+
+</script>
+
+
+<img id ="image" src="penny.JPG">
+<br />
+<h1> This is a : </h1>
+
+<b style="background-color: lightgrey; text-align:center; border: 3px pink dotted; width:150px; id="Your-Answer" onclick="Check_Coin(1)">Penny</b>
+<b style="color: yellow; background-color: darkred; text-align:center; border: 3px white dotted; width:150px; id="Your-Answer" onclick="Check_Coin(5)">Nickel</b>
+<b style="background-color: lightgrey; text-align:center; border: 3px pink dotted; width:150px; id="Your-Answer" onclick="Check_Coin(10)">Dime</b>
+<b style="color: yellow; background-color: darkred; text-align:center; border: 3px white dotted; width:150px; id="Your-Answer" onclick="Check_Coin(25)">Quarter</b>
+
+<br />
+<h1 id="Error_Message"></h1>

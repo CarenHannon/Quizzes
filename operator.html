@@ -1,0 +1,111 @@
+<h1> Operator Properties</h1>
+
+<script language="Javascript" type="text/javascript">
+var Sign = " ";
+var temp = 0;
+var nums = new Array();
+var truth = 0;
+var first = 0;
+
+function loadSign(venture)
+{
+temp = Math.floor(Math.random()*venture);
+
+switch(temp)
+{
+case 0:
+Sign = " + ";
+break;
+
+case 1:
+Sign = " x ";
+break;
+
+case 2:
+Sign = " - ";
+break;
+
+default:
+Sign = " / ";
+}
+}//end function
+
+function getNumbers()
+{
+nums[0] = Math.floor(Math.random()*100);
+nums[1] = Math.floor(Math.random()*100);
+nums[2] = nums[0];
+}
+
+function checkAnswer()
+{
+if(document.getElementById("answer1").value == nums[1])
+document.getElementById("solution1").innerHTML = "Correct";
+else
+document.getElementById("solution1").innerHTML = "Incorrect. " + nums[0] + Sign + nums[1] + " is the same as " + nums[1] + Sign + nums[0];
+}
+
+function loadQuestion()
+{
+if(first!=0)
+checkAnswer();
+
+document.getElementById("clicky1").value="Check Answer and Get Question";
+loadSign(2);
+getNumbers();
+document.getElementById("question1").innerHTML = " " + nums[0] + Sign + nums[1] + " = " + "___" + Sign + nums[2];
+first = 1;
+
+}
+
+function loadMulti()
+{
+document.getElementById("true").style.display = "inline";
+document.getElementById("false").style.display = "inline";
+
+loadSign(4);
+getNumbers();
+document.getElementById("question2").innerHTML = "Does " +  nums[0] + Sign + nums[1] + " = " + nums[1] + Sign + nums[2] + "?";
+}
+
+function check(boolcheck)
+{
+switch(Sign)
+{
+case " + ":
+truth = 1;
+break;
+
+case " - ":
+truth = 0;
+break;
+
+case " x ":
+truth = 1;
+break;
+
+default:
+truth = 0;
+
+}
+if(truth == boolcheck)
+document.getElementById("solution2").innerHTML = "Correct";
+else
+document.getElementById("solution2").innerHTML = "Incorrect. " + nums[0] + Sign + nums[1] + " is not the same as " + nums[1] + Sign + nums[0];
+loadMulti();
+}
+</script>
+
+<h2 style="border: 3px ridge orange; background:lightpink; text-align:center;"> Addition and Multiplication </h2>
+<h1 id="question1"></h1>
+<input type="text" id="answer1">
+<input type="button" value="Get a Question" id="clicky1" onclick="loadQuestion()">
+<h1 id="solution1"></h1>
+
+
+<h2 style="border: 3px ridge orange; background:lightpink; text-align:center;"> Addition, subtraction, multiplication, and division</h2>
+<h1 id="question2"></h1>
+<b style="border: 2px darkred groove; background:beige; margin:5px; padding:3px;" id="true" onclick="check(1)" style="display:none;">Yes</b>
+<b style="border: 2px darkred groove; background:beige; margin:5px; padding:3px;" id="false" onclick="check(0)" style="display:none;">No</b>
+<h1 id="solution2"></h1>
+<input type="button" value="Get a Question" onclick="loadMulti()">

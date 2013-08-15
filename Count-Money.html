@@ -1,0 +1,104 @@
+<h1>How Much Money Is There</h1>
+The first exercise is done for you<br />
+
+<script language = "Javascript" type="text/javascript">
+var first = 0;
+var total = 6;
+var CoinsArray = new Array();
+var i = 0;
+
+//setVariables
+function setVariables()
+{//beging function
+
+for (i = 0; i < 5; i ++)
+CoinsArray[i] = Math.floor(Math.random()*4);
+
+
+for (i = 0; i < 5; i++)
+{//begin for
+switch (CoinsArray[i])
+{//begin switch
+case 1:
+CoinsArray[i] = 5;
+break;
+
+case 2:
+CoinsArray[i] = 10;
+break;
+
+case 3:
+CoinsArray[i] = 25;
+break;
+
+default:
+CoinsArray[i] = 1;
+}//end switch
+}//end for
+
+total = 0;
+for ( i = 0; i < 5; i++)
+total += CoinsArray[i];
+
+
+}//end function
+
+//setPicture
+function setPicture(loc)
+{
+
+
+switch(CoinsArray[loc-1])
+{
+case 5:
+document.getElementById("image"+loc).src="nickel.jpg";
+break;
+
+case 10:
+document.getElementById("image"+loc).src="dime.jpg";
+break;
+
+case 25:
+document.getElementById("image"+loc).src="quarter.jpg";
+break;
+
+default:
+document.getElementById("image"+loc).src="penny.jpg";
+}
+
+}
+
+//count Coins
+function Count_Coins()
+{
+if (first!=0)
+{
+if(document.getElementById("Coin-Answer").value == total)
+document.getElementById("Wrong_Answer").innerHTML = "Correct";
+else
+document.getElementById("Wrong_Answer").innerHTML = "Incorrect\n" + CoinsArray[0] +", " + CoinsArray[1] +", " + CoinsArray[2] +", " + CoinsArray[3] +", " + CoinsArray[4] + " cents all add up to " + total + " cents";
+
+}
+document.getElementById("Coin-Answer").value = "";
+
+setVariables();
+for(i = 1; i <= 5; i++)
+setPicture(i);
+first = 1;
+
+
+
+
+}
+
+</script>
+
+<img id = "image1" src="penny.JPG">
+<img id = "image2" src="penny.JPG">
+<img id = "image3" src="penny.JPG">
+<img id = "image4" src="dime.JPG">
+<img id = "image5" src="dime.JPG">
+<br />
+<input type="text" id ="Coin-Answer" value="23" width="20px"> Total Cents<br />
+<input type="button" value="Give Me a Question!" onclick="Count_Coins()"/>
+<h1 id="Wrong_Answer"></h1>

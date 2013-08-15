@@ -1,0 +1,32 @@
+<h2 style="border: 3px ridge orange; background:lightpink; text-align:center;">Odd and Even</h2>
+<h1 id="Odd_answer"></h1>
+<h1 id="Odd_question"></h1>
+
+<b style="border:3px groove darkred; background: beige; padding:5px; margin:5px; font-size:20px;" onclick="Odd_Even(1)">Odd</b> <b style="border:3px groove darkred; background: beige; padding:5px; margin:5px; font-size:20px;" onclick="Odd_Even(0)">Even</b>
+
+
+<script language="Javascript" type="text/javascript">
+var OE_num = 0;
+document.getElementById("Odd_question").innerHTML = "Is 0 Odd or Even?";
+
+function getNewNumber()
+{
+OE_num = Math.round(Math.random()*1000);
+document.getElementById("Odd_question").innerHTML = "Is " + OE_num + " Odd or Even?";
+}
+
+function Odd_Even( OE)
+{
+if(OE == 1 && OE_num%2 == 1)
+	document.getElementById("Odd_answer").innerHTML = "Correct. " + OE_num + " is odd.";
+else if(OE == 0 && OE_num%2 ==0)
+	document.getElementById("Odd_answer").innerHTML = "Correct. " + OE_num +" is even.";
+else if(OE_num%2 == 1)
+	document.getElementById("Odd_answer").innerHTML = "Wrong. " + OE_num + " is odd.";
+else
+	document.getElementById("Odd_answer").innerHTML = "Wrong. " + OE_num + " is even.";
+getNewNumber();
+}
+
+
+</script>

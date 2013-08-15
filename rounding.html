@@ -1,0 +1,92 @@
+<h1> Rounding and Estimating</h1>
+
+<h2 style="border: 3px ridge orange; background:lightpink; text-align:center;">Rounding</h2>
+<script language="Javascript" type="text/javascript">
+var round_num = -1;
+var right_round = 0;
+var round_ans = 0;
+
+function Round()
+{
+
+if(round_num!=-1)
+{
+if(document.getElementById("Round_Answer").value == right_round)
+document.getElementById("Round_Solution").innerHTML="Correct";
+else
+document.getElementById("Round_Solution").innerHTML="Incorrect: " + round_num + " rounds to " + right_round;
+}
+
+round_num = Math.round(Math.random()*100);
+document.getElementById("Round_Question").innerHTML="Round " + round_num;
+right_round = Math.round(round_num/10)*10;
+
+
+}
+</script>
+
+<h1 id="Round_Question"></h1>
+<input type="text" id="Round_Answer">
+<input type="button" onclick="Round()" value="Check Answer and Get Question">
+<h1 id="Round_Solution"></h1>
+
+
+<h2 style="border: 3px ridge orange; background:lightpink; text-align:center;">Estimating</h2>
+
+
+<script language="Javascript" type="text/javascript">
+var es_num = new Array();
+var es_i = 0;
+var question = " ";
+var answer_num = new Array();
+var es_total = 0;
+
+function getNumbers()
+{
+for (es_i = 0; es_i < 4; es_i++)
+{
+es_num[es_i] = Math.round(Math.random()*100);
+while(es_num[es_i]%10 == 0)
+es_num[es_i] = Math.round(Math.random()*100);
+}
+
+question = "Estimate " + es_num[0];
+for(es_i = 1; es_i<4; es_i++)
+question += " + " + es_num[es_i];
+}
+
+function checkAnswer()
+{
+es_total = 0;
+for(es_i = 0; es_i < 4; es_i++)
+{
+answer_num[es_i] = Math.round(es_num[es_i]/10)*10;
+es_total += answer_num[es_i];
+}
+
+if(document.getElementById("answer").value!=es_total)
+document.getElementById("solution").innerHTML = "Sorry <br />" + question + " to " + answer_num[0] + " + " + answer_num[1] + " + " + answer_num[2] + " + " + answer_num[3] + " = " + es_total;
+else
+document.getElementById("solution").innerHTML = "Correct!";
+
+}
+
+
+function Estimate()
+{
+if(question!= " ")
+{
+checkAnswer();
+
+}
+getNumbers();
+document.getElementById("question").innerHTML = question;
+}
+</script>
+
+
+<h1>Estimate the following:</h1>
+<h1 id="question"></h1>
+<input type="text" id="answer">
+<input type="button" value="Get Question" onclick="Estimate()">
+<h1 id="solution"></h1>

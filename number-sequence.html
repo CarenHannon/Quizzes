@@ -1,0 +1,66 @@
+<h2 style="border: 3px ridge orange; background:lightpink; text-align:center;">Counting</h2>
+
+<script language="Javascript" type="text/javascript">
+
+var beforeafter = "after";
+var sequence_number = 0;
+var sequence_counter = 0;
+var sequence_answer = 0;
+
+function getSequenceNumber()
+{
+sequence_number = Math.round(Math.random());
+// 0 to 1
+
+if(sequence_number == 0)
+beforeafter = "before";
+else
+beforeafter = "after";
+
+sequence_number = Math.floor(Math.random()*1000);
+// 0 to 999
+if(beforeafter == "before")
+{
+sequence_number + 1;
+sequence_answer = sequence_number - 1;
+}
+else
+sequence_answer = sequence_number + 1;
+}
+
+function check_Sequence()
+{
+if(document.getElementById("sequence_answer").value == sequence_answer)
+document.getElementById("sequence_response").innerHTML = "Correct!";
+else
+
+document.getElementById("sequence_response").innerHTML = "False. " + sequence_answer + " comes " + beforeafter + " " + sequence_number;
+}
+
+function Sequence_Load()
+{
+if(sequence_counter!=0)
+check_Sequence();
+if(sequence_counter == 5)
+{
+
+beforeafter = "after";
+sequence_number = 999;
+sequence_answer = 1000;
+}
+else
+getSequenceNumber();
+
+
+document.getElementById("sequence_question").innerHTML = "What comes " + beforeafter + " " + sequence_number + " ? ";
+
+sequence_counter++;
+
+}
+
+
+</script>
+<h1 id="sequence_question"></h1>
+<input type="text" id="sequence_answer">
+<input type="button" value="Give me a Number" onclick="Sequence_Load()">
+<h1 id="sequence_response"></h1>
